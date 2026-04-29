@@ -3,32 +3,42 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, ZoomIn } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
 
+// ─── ALL IMAGES TAKEN DIRECTLY FROM menuData.js — 100% working URLs ───────
 const galleryImages = [
-  // ROW 1 — Big cafe hero + 2 stacked drinks
-  { id:1,  src:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=85', alt:'Bubble Bliss Café Interior — Vijay Nagar Indore', category:'Café',    span:'col-span-2 row-span-2' },
-  { id:2,  src:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85', alt:'Classic Bubble Tea Close-Up',                      category:'Drinks',  span:'col-span-1 row-span-1' },
-  { id:3,  src:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&q=85', alt:'Brown Sugar Milk Tea',                           category:'Drinks',  span:'col-span-1 row-span-1' },
+  // DRINKS / BUBBLE TEA
+  { id:1,  src:'https://plus.unsplash.com/premium_photo-1671379526961-1aebb82b317b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWlsayUyMHRlYXxlbnwwfHwwfHx8MA%3D%3D',      alt:'Classic Milk Tea',        category:'Drinks',  span:'col-span-2 row-span-2' },
+  { id:2,  src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQupTdBiUwao7xVprKm8kq-5MEnu6k-Lv4Efw&s',                                                                                                           alt:'Brown Sugar Milk Tea',    category:'Drinks',  span:'col-span-1 row-span-1' },
+  { id:3,  src:'https://images.unsplash.com/photo-1644203541701-0c534473e616?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGhhaSUyMHRlYXxlbnwwfHwwfHx8MA%3D%3D',           alt:'Thai Milk Tea',           category:'Drinks',  span:'col-span-1 row-span-1' },
+  { id:4,  src:'https://media.istockphoto.com/id/497654828/photo/taro-bubble-tea.jpg?s=612x612&w=0&k=20&c=W3vU1FwU86UbX_G25w8PIC6apGewBJBcQLnOQi4fkxM=',                                                                alt:'Taro Bubble Tea',         category:'Drinks',  span:'col-span-1 row-span-1' },
+  { id:5,  src:'https://media.istockphoto.com/id/1358745285/photo/pouring-green-matcha-into-glass-with-milk-bubble-tea-at-black-wooden-table-closeup.jpg?s=612x612&w=0&k=20&c=Nr8woKM22v54DUTuEn3ZzSKGnK9UjjxtbZBjaXs6b2U=', alt:'Matcha Bubble Tea',    category:'Drinks',  span:'col-span-1 row-span-1' },
+  { id:6,  src:'https://t4.ftcdn.net/jpg/19/12/83/43/360_F_1912834397_EU9Di4rQJb0AKm3zsDN2gCRAxJh2ChNh.jpg',                                                                                                              alt:'Mango Bubble Tea',        category:'Drinks',  span:'col-span-1 row-span-1' },
+  { id:7,  src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPzvz5IVbK6lRGHLTuOI32ecT6gVTO7Xlung&s',                                                                                                           alt:'Strawberry Bubble Tea',   category:'Drinks',  span:'col-span-1 row-span-1' },
+  { id:8,  src:'https://myveganminimalist.com/wp-content/uploads/2022/05/Oreo-Bubble-Milk-Tea-Boba-12-1024x1536.jpg',                                                                                                     alt:'Oreo Bubble Tea',         category:'Drinks',  span:'col-span-1 row-span-1' },
 
-  // ROW 2 — Brand tall + 2 drinks
-  { id:4,  src:'https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=85', alt:'Bubble Bliss Brand Identity',                    category:'Brand',   span:'col-span-1 row-span-2' },
-  { id:5,  src:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=85', alt:'Blue Lagoon Mojito',                                 category:'Mojitos', span:'col-span-1 row-span-1' },
-  { id:6,  src:'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&q=85', alt:'Mint Mojito Served Fresh',                          category:'Mojitos', span:'col-span-1 row-span-1' },
+  // MOJITOS
+  { id:9,  src:'https://kitchenswagger.com/wp-content/uploads/2020/07/mojito-recipe_0009_DSC_5509.jpg',                                                                                                                    alt:'Mint Mojito',             category:'Mojitos', span:'col-span-1 row-span-2' },
+  { id:10, src:'https://static.tossdown.com/images/7b0ff8a6-a2c0-484c-8307-d73082112b18.webp',                                                                                                                            alt:'Blue Lagoon Mojito',      category:'Mojitos', span:'col-span-1 row-span-1' },
+  { id:11, src:'https://bellyfull.net/wp-content/uploads/2022/06/Frozen-Strawberry-Mojito-blog-2.jpg',                                                                                                                    alt:'Strawberry Mojito',       category:'Mojitos', span:'col-span-1 row-span-1' },
+  { id:12, src:'https://media.istockphoto.com/id/479079920/photo/watermelon-mojito.jpg?s=612x612&w=0&k=20&c=t4bKU9u87_0x3Rj7lGNGOTO4rET6BTHpQ2hFLkO95H8=',                                                              alt:'Watermelon Mojito',       category:'Mojitos', span:'col-span-1 row-span-1' },
+  { id:13, src:'https://media.istockphoto.com/id/1454250040/photo/boozy-refreshing-pineapple-mojito-cocktail.jpg?s=612x612&w=0&k=20&c=ZzpepKAbu5dlV34njRKKFg9OQ_saMU4Zg0KvDdcDsHc=',                                    alt:'Pineapple Mojito',        category:'Mojitos', span:'col-span-1 row-span-1' },
+  { id:14, src:'https://img.clevup.in/336545/SKU-0285_0-1724525497177.jpg?width=600&format=webp',                                                                                                                          alt:'Bubble Gum Mojito',       category:'Mojitos', span:'col-span-1 row-span-1' },
 
-  // ROW 3 — Wide cups banner + 1 coffee
-  { id:7,  src:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85', alt:'Barista Pouring Latte Art',                      category:'Coffee',  span:'col-span-2 row-span-1' },
-  { id:8,  src:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=85', alt:'Cold Brew Coffee',                               category:'Coffee',  span:'col-span-1 row-span-1' },
+  // COFFEE
+  { id:15, src:'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2F9eada0d203bfb580d801b478edd553465c7afb52',                                                     alt:'Cold Brew Coffee',        category:'Coffee',  span:'col-span-1 row-span-1' },
+  { id:16, src:'https://www.chilitochoc.com/wp-content/uploads/2022/12/homemade-caramel-latte-ft.jpg',                                                                                                                    alt:'Caramel Latte',           category:'Coffee',  span:'col-span-2 row-span-1' },
+  { id:17, src:'https://media.istockphoto.com/id/1324007808/photo/dalgona-coffee-with-coffee-beans-on-table.jpg?s=612x612&w=0&k=20&c=rMYdqfDabwczSHdceHnrCNwawEhTQy4N7hPqzJErl5c=',                                    alt:'Dalgona Coffee',          category:'Coffee',  span:'col-span-1 row-span-1' },
+  { id:18, src:'https://media.istockphoto.com/id/1308045723/photo/cold-coffee-frappuccino.jpg?s=612x612&w=0&k=20&c=drB225PkXKnjRzym-06I3rQs2dawXXb2mxsdbkj9aK0=',                                                       alt:'Mocha Frappe',            category:'Coffee',  span:'col-span-1 row-span-1' },
 
-  // ROW 4 — Drinks row
-  { id:9,  src:'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&q=85', alt:'Thai Milk Tea',                                  category:'Drinks',  span:'col-span-1 row-span-1' },
-  { id:10, src:'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=600&q=85', alt:'Matcha Latte',                                   category:'Drinks',  span:'col-span-1 row-span-1' },
-  { id:11, src:'https://images.unsplash.com/photo-1485808191679-5f86510bd9d4?w=600&q=85', alt:'Caramel Latte',                                  category:'Coffee',  span:'col-span-1 row-span-1' },
-
-  // ROW 5 — Snacks
-  { id:12, src:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=85', alt:'Walnut Brownie',                                 category:'Snacks',  span:'col-span-1 row-span-1' },
-  { id:13, src:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=85', alt:'Cheese Loaded Fries',                            category:'Snacks',  span:'col-span-2 row-span-1' },
+  // SNACKS
+  { id:19, src:'https://theobroma.in/cdn/shop/files/WalnutBrownie02.jpg?v=1711183450',                                                                                                                                    alt:'Walnut Brownie',          category:'Snacks',  span:'col-span-1 row-span-1' },
+  { id:20, src:'https://img.freepik.com/free-photo/brownie-chocolate-ice-cream-mint-sugar-powder-side-view_141793-15452.jpg?semt=ais_hybrid&w=740&q=80',                                                                  alt:'Sizzling Brownie',        category:'Snacks',  span:'col-span-1 row-span-1' },
+  { id:21, src:'https://thumbs.dreamstime.com/b/french-fries-sprinkled-salt-iron-bucket-painted-wooden-table-beautiful-light-sprinkle-53992264.jpg',                                                                      alt:'Salted Fries',            category:'Snacks',  span:'col-span-1 row-span-1' },
+  { id:22, src:'https://t3.ftcdn.net/jpg/12/10/11/00/360_F_1210110090_x9fJWPscHj4pkythvbjf52oXzQgKLr4p.jpg',                                                                                                              alt:'Cheese Loaded Fries',     category:'Snacks',  span:'col-span-2 row-span-1' },
+  { id:23, src:'https://rakskitchen.net/wp-content/uploads/2018/07/corn-cheese-sandwich-recipe-500x500.jpg',                                                                                                              alt:'Cheese Corn Sandwich',    category:'Snacks',  span:'col-span-1 row-span-1' },
+  { id:24, src:'https://t3.ftcdn.net/jpg/01/01/68/40/360_F_101684055_3ljuQD0UWy58RJBUJMMiHpOVrAFZRomK.jpg',                                                                                                              alt:'Club Sandwich',           category:'Snacks',  span:'col-span-1 row-span-1' },
 ]
 
-const filters = ['All', 'Café', 'Drinks', 'Mojitos', 'Coffee', 'Snacks', 'Brand']
+const filters = ['All', 'Drinks', 'Mojitos', 'Coffee', 'Snacks']
 
 export default function Gallery() {
   const [filter, setFilter] = useState('All')
@@ -37,11 +47,11 @@ export default function Gallery() {
 
   return (
     <PageWrapper>
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative pt-36 pb-16 px-4 sm:px-6">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=60"
+            src="https://plus.unsplash.com/premium_photo-1671379526961-1aebb82b317b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWlsayUyMHRlYXxlbnwwfHwwfHx8MA%3D%3D"
             alt=""
             className="w-full h-full object-cover"
             style={{ opacity: 0.07 }}
@@ -91,7 +101,7 @@ export default function Gallery() {
         <div className="max-w-7xl mx-auto">
           <motion.div
             layout
-            className="grid grid-cols-3 gap-3 sm:gap-4 auto-rows-[160px] sm:auto-rows-[200px]"
+            className="grid grid-cols-3 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[220px]"
           >
             <AnimatePresence>
               {filtered.map((img, i) => (
@@ -110,7 +120,6 @@ export default function Gallery() {
                     alt={img.alt}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     loading="lazy"
-                    onError={(e) => { e.target.style.opacity = '0.3' }}
                   />
                   <div className="absolute inset-0 bg-[#080808]/0 group-hover:bg-[#080808]/45 transition-all duration-500" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -120,7 +129,7 @@ export default function Gallery() {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                     <p className="text-gold-500 font-body text-[8px] sm:text-[9px] tracking-widest uppercase">{img.category}</p>
-                    <p className="text-white font-serif text-xs sm:text-sm leading-tight">{img.alt.split('—')[0].trim()}</p>
+                    <p className="text-white font-serif text-xs sm:text-sm leading-tight">{img.alt}</p>
                   </div>
                   <div className="absolute inset-0 rounded-xl sm:rounded-2xl border border-gold-500/0 group-hover:border-gold-500/25 transition-all duration-500" />
                 </motion.div>
@@ -128,10 +137,9 @@ export default function Gallery() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Empty state */}
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-white/30 font-body text-sm">No images in this category yet.</p>
+              <p className="text-white/30 font-body text-sm">No images in this category.</p>
             </div>
           )}
         </div>
@@ -168,7 +176,7 @@ export default function Gallery() {
               </button>
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-[#080808]/90 to-transparent rounded-b-xl sm:rounded-b-2xl">
                 <p className="text-gold-500 font-body text-[9px] tracking-widest uppercase">{lightbox.category}</p>
-                <p className="text-white font-serif text-lg">{lightbox.alt.split('—')[0].trim()}</p>
+                <p className="text-white font-serif text-lg">{lightbox.alt}</p>
               </div>
             </motion.div>
           </motion.div>
