@@ -6,7 +6,7 @@ import PageWrapper from '../components/PageWrapper'
 const galleryImages = [
   // DRINKS
   { id:1,  src:'https://plus.unsplash.com/premium_photo-1671379526961-1aebb82b317b?fm=jpg&q=60&w=800&auto=format&fit=crop',      alt:'Classic Milk Tea',        category:'Drinks'  },
-  { id:2,  src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQupTdBiUwao7xVprKm8kq-5MEnu6k-Lv4Efw&s',                 alt:'Brown Sugar Milk Tea',    category:'Drinks'  },
+  { id:2,  src:'https://www.shutterstock.com/image-photo/cup-sweet-brown-sugar-pearl-600nw-2655223425.jpg',                 alt:'Brown Sugar Milk Tea',    category:'Drinks'  },
   { id:3,  src:'https://images.unsplash.com/photo-1644203541701-0c534473e616?fm=jpg&q=60&w=800&auto=format&fit=crop',            alt:'Thai Milk Tea',           category:'Drinks'  },
   { id:4,  src:'https://media.istockphoto.com/id/497654828/photo/taro-bubble-tea.jpg?s=612x612&w=0&k=20&c=W3vU1FwU86UbX_G25w8PIC6apGewBJBcQLnOQi4fkxM=', alt:'Taro Bubble Tea', category:'Drinks' },
   { id:5,  src:'https://media.istockphoto.com/id/1358745285/photo/pouring-green-matcha-into-glass-with-milk-bubble-tea-at-black-wooden-table-closeup.jpg?s=612x612&w=0&k=20&c=Nr8woKM22v54DUTuEn3ZzSKGnK9UjjxtbZBjaXs6b2U=', alt:'Matcha Bubble Tea', category:'Drinks' },
